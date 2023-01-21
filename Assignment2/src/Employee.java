@@ -1,6 +1,7 @@
 public class Employee extends Person {
     private int id;
     private String name;
+    private static int idg = 1;
     private String surname;
     private String position;
     private double salary;
@@ -40,14 +41,13 @@ public class Employee extends Person {
         setPosition(position);
         setSalary(salary);
     }
-    public Employee() {}
+    public Employee() {
+        id = idg++;
+    }
     @Override
-    public int compareTo(Employee other) {
-        return Double.compare(this.getPaymentAmount(), other.getPaymentAmount());
+    public double getPaymentAmount() {
+        return salary;
     }
 
-    @Override
-    public int compareTo(Student other) {
-        return 0;
-    }
+
 }

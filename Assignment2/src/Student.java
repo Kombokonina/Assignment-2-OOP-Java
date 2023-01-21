@@ -1,5 +1,6 @@
 public class Student extends Person {
     private int id;
+    private static int idg = 1;
     private String name;
     private String surname;
     private double gpa;
@@ -32,15 +33,17 @@ public class Student extends Person {
         setSurname(surname);
         setGpa(gpa);
     }
-    public Student() {}
-
+    public Student() {
+        id = idg++;
+    }
     @Override
-    public int compareTo(Employee other) {
-        return 0;
+    public double getPaymentAmount() {
+        if (gpa > 2.67) {
+            return 36660.00;
+        }
+        else {
+            return 0;
+        }
     }
 
-    @Override
-    public int compareTo(Student other) {
-        return Double.compare(this.getPaymentAmount(), other.getPaymentAmount());
-    }
 }

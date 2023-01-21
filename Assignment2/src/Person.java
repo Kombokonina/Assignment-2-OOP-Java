@@ -1,10 +1,11 @@
-public abstract class Person implements Payable {
+public abstract class Person implements Payable, Comparable<Person> {
     private int id;
+    private static int idg = 1;
     private String name;
     private String surname;
-    @Override
-    public String toString() {
-        return id + "." + name + " " + surname;
+
+    public String toString(Person p) {
+        return this.id + "." + this.getName() + " " + this.getSurname();
     }
     public void setName(String name) {
         this.name=name;
@@ -25,22 +26,28 @@ public abstract class Person implements Payable {
         setName(name);
         setSurname(surname);
     }
-    public Person() {}
+    public Person() {
+        id = idg++;
+    }
     public String getPosition() {
         return "Student";
     }
-    Student student = new Student();
     @Override
     public double getPaymentAmount() {
-        if (student.getGpa() > 2.67) {
-            return 36660.00;
+        return this.getPaymentAmount();
+    }
+    @Override
+    public int compareTo(Person a){
+        if(this.getPaymentAmount()>a.getPaymentAmount()){
+            return 1;
         }
-        else {
+        else if (this.getPaymentAmount()==a.getPaymentAmount()){
             return 0;
+        }
+        else{
+            return -1;
         }
     }
 
-    public abstract int compareTo(Employee other);
 
-    public abstract int compareTo(Student other);
 }

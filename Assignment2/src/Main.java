@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main {
-    public void main() {
+    public static void main(String[] args) {
         Employee e1 = new Employee("John", "Lennon", "Singer", 27000.50);
         Employee e2 = new Employee("George", "Harrison", "Guitarist", 50000);
         Student s1 = new Student("Ringo", "Starr", 2.5);
@@ -20,9 +20,9 @@ public class Main {
         for (Person person : persons) {
             double payment = person.getPaymentAmount();
             if (person instanceof Employee) {
-                System.out.println("Employee: " + person.toString() + " earns " + payment + " tenge");
+                System.out.println("Employee: " + person.toString(person) + " earns " + payment + " tenge");
             } else {
-                System.out.println("Student: " + person.toString() + " earns " + payment + " tenge");
+                System.out.println("Student: " + person.toString(person) + " earns " + payment + " tenge");
             }
         }
     }
